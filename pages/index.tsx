@@ -1,10 +1,15 @@
-import styled from 'styled-components'
+import Layout from '../components/Layout'
+import Balance from '../components/Balance'
+import Transaction from '../components/Transaction'
 
-const Title = styled.h1`
-  color: red;
-  font-size: 50px;
-`
 
 export default function Home() {
-  return <Title>My page</Title>
+    return (
+        <>
+            <Layout title='Home | Maratona - Finance.Note' >
+                <Balance />
+                <Transaction />
+            </Layout>
+        </>
+    )
 }

@@ -1,0 +1,101 @@
+import type { AppProps } from 'next/app'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html{
+        font-size: 93.75%;
+    }
+
+    body {
+        background: #f0f2f5;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .container{
+        width: min(80vw, 800px);
+        margin: auto;
+    }
+
+    table th {        
+        padding: 1rem 2rem;
+        text-align: left;
+    }
+
+    table td {        
+        padding: 1rem 2rem;
+        text-align: left;
+    }
+
+    table thead tr th:first-child,
+    table tbody tr td:first-child {
+        border-radius: 0.5rem 0 0 0.5rem;
+    }    
+    table thead tr th:last-child,
+    table tbody tr td:last-child {
+        border-radius: 0 0.5rem 0.5rem 0;
+    }  
+
+    table tr { opacity: 0.8 }
+    table tr:hover { opacity: 1 }
+
+    .sr-only{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border-width: 0;
+
+    }
+    a:hover{
+        opacity: 0.4;
+    }
+
+    @media (min-width: 800px) {
+        html {
+            font-size: 87.5%;
+        }
+        #balance {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+    }
+
+`
+
+const theme = {
+    colors: {
+        primary: '#00c7a6',
+        darkBlue: '#363f5f',
+        white: '#fff'
+    },
+    background: {
+        white: '#fff',
+        green: '#00c7a6'
+    }
+}
+
+function MyApp({ Component, pageProps }: AppProps) {
+    return (
+        <>
+            <GlobalStyle />
+            <ThemeProvider theme={theme}>
+                <Component {...pageProps} />
+            </ThemeProvider>
+
+        </>
+    )
+}
+
+export default MyApp
