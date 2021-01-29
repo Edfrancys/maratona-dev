@@ -44,19 +44,25 @@ const ArrTransactionData = [
     {
         id: 1,
         description: 'Luz',
-        amount: -50050,
+        amount: -8000,
         date: '23/01/2021'
     },
     {
         id: 2,
         description: 'Água',
-        amount: -20050,
+        amount: -4550,
         date: '23/01/2021'
     },
     {
         id: 3,
-        description: 'Website',
-        amount: 100050,
+        description: 'Salário Photoshop',
+        amount: 110000,
+        date: '23/01/2021'
+    },
+    {
+        id: 4,
+        description: 'Feira Mês',
+        amount: -19000,
         date: '23/01/2021'
     }]
 
