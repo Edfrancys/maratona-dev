@@ -36,7 +36,7 @@ const Expense = styled.td`
 `
 
 const Data = styled.td`
-    color: #12a454;
+    color: #353535;
 `
 
 const Linkhref = styled.a`
@@ -46,19 +46,59 @@ const Linkhref = styled.a`
     border: 1px solid #00c7a6;
     display: inline-block;
     margin: 2rem 0 1rem 0;
+    cursor: pointer;
 
 `
 
+const openModal = () => {
+    document.querySelector('#modal')?.classList.add('modal-active')
+}
+
+const ArrTransactionData = [
+    {
+        id: 1,
+        description: 'Luz',
+        amount: -50050,
+        date: '23/01/2021'
+    },
+    {
+        id: 2,
+        description: 'Água',
+        amount: -20050,
+        date: '23/01/2021'
+    },
+    {
+        id: 3,
+        description: 'Website',
+        amount: 100050,
+        date: '23/01/2021'
+    }]
+
+const convertValor = (valor: any) => {
+
+    const signal = Number(valor) < 0 ? '-' : ''
+    
+    valor = String(valor).replace(/\D/g, '')
+    valor = Number(valor) / 100
+    valor = valor.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    })
+
+    return `${signal}  ${valor}`
+}
 
 const Transaction = () => {
-    return <>
 
+    
+
+    return <>
         <section id='transaction'>
             <div className="container">
 
                 <Title className='sr-only'>Transações</Title>
 
-                <Linkhref href="#">+ Adicionar Tranzação</Linkhref>
+                <Linkhref onClick={openModal} >+ Adicionar Tranzação</Linkhref>
 
                 <DivTable>
                     <Table>
@@ -71,32 +111,26 @@ const Transaction = () => {
                             </Theader>
                         </thead>
                         <tbody>
-                            <Theader>
-                                <Description>Luz</Description>
-                                <Expense>-R$80,00</Expense>
-                                <Data>20/01/2020</Data>
-                                <td>delete</td>
-                            </Theader>
-                            <Theader>
-                                <Description>Aluguel</Description>
-                                <Expense>-R$400,00</Expense>
-                                <Data>20/01/2020</Data>
-                                <td>delete</td>
-                            </Theader>
-                            <Theader>
-                                <Description>Salário</Description>
-                                <Income>R$1100,00</Income>
-                                <Data>20/01/2020</Data>
-                                <td>delete</td>
-                            </Theader>
+
+                            {ArrTransactionData.map((value, idx) => (
+                                <Theader key={idx} >
+                                    <Description>{value.description}</Description>
+
+                                    { value.amount > 0 ?
+                                        <Income>{convertValor(value.amount)}</Income>
+                                        : <Expense>{convertValor(value.amount)}</Expense>
+                                    }
+
+                                    <Data>{value.date}</Data>
+                                    <td> Delete </td>
+                                </Theader>
+                            ))}
+
                         </tbody>
                     </Table>
                 </DivTable>
             </div>
         </section>
-
-
-
     </>
 }
 

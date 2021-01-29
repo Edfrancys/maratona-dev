@@ -57,6 +57,7 @@ const GlobalStyle = createGlobalStyle`
         border-width: 0;
 
     }
+
     a:hover{
         opacity: 0.4;
     }
@@ -70,6 +71,25 @@ const GlobalStyle = createGlobalStyle`
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
+    }
+
+    .modal-active {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .btn {        
+        padding: .5rem .5rem;
+        border: .2rem solid;
+        text-align: center;
+        font-size: 1.3rem;
+        border-radius: .7rem;
+        cursor: pointer;
+    }
+
+    button.btn.adicionar:hover{
+        background: green;
+        color: white;
     }
 
 `
