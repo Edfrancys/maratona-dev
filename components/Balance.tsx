@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styled from 'styled-components'
 import { FaArrowAltCircleUp, FaArrowCircleDown, FaMoneyBillWave } from "react-icons/fa"
 
@@ -60,8 +59,6 @@ const ArrTransactionData = [
         amount: 100050,
         date: '23/01/2021'
     }]
-
-// const [countIncome, setCountIncome] = useState({})
 
 const convertValor = (valor: any) => {
 
