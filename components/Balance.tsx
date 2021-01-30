@@ -98,7 +98,7 @@ const Balance = () => {
     }, [])  
     const entradas = Incomes(tranzactions)
     const saidas = Expenses(tranzactions)
-    const total = entradas + saidas
+    const total = Number(entradas) + Number(saidas)
 
     return <>
         <div className='container'>
