@@ -42,33 +42,6 @@ const CardGreen = styled(CardEntradas)`
     background: ${props => props.theme.background.green};
     color: ${props => props.theme.colors.white};
 `
-
-const ArrTransactionData = [
-    {
-        id: 1,
-        description: 'Luz',
-        amount: -8000,
-        date: '23/01/2021'
-    },
-    {
-        id: 2,
-        description: 'Água',
-        amount: -4550,
-        date: '23/01/2021'
-    },
-    {
-        id: 3,
-        description: 'Salário Photoshop',
-        amount: 110000,
-        date: '23/01/2021'
-    },
-    {
-        id: 4,
-        description: 'Feira Mês',
-        amount: -19000,
-        date: '23/01/2021'
-    }]
-
 const convertValor = (valor: any) => {
 
     const signal = Number(valor) < 0 ? '-' : ''
