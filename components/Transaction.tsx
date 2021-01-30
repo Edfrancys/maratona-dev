@@ -1,4 +1,7 @@
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { db } from '../utils/Firebase'
+import { TranzactionData } from '../utils/interfaces/TranzactionsInterface';
 
 const DivTable = styled.div`
     display: block;
@@ -38,7 +41,6 @@ const Expense = styled.td`
 const Data = styled.td`
     color: #353535;
 `
-
 const Linkhref = styled.a`
     color: ${props => props.theme.colors.primary};
     padding: .8rem 1.5rem;
@@ -47,43 +49,16 @@ const Linkhref = styled.a`
     display: inline-block;
     margin: 2rem 0 1rem 0;
     cursor: pointer;
-
 `
 
 const openModal = () => {
     document.querySelector('#modal')?.classList.add('modal-active')
 }
 
-const ArrTransactionData = [
-    {
-        id: 1,
-        description: 'Luz',
-        amount: -8000,
-        date: '23/01/2021'
-    },
-    {
-        id: 2,
-        description: 'Água',
-        amount: -4550,
-        date: '23/01/2021'
-    },
-    {
-        id: 3,
-        description: 'Salário Photoshop',
-        amount: 110000,
-        date: '23/01/2021'
-    },
-    {
-        id: 4,
-        description: 'Feira Mês',
-        amount: -19000,
-        date: '23/01/2021'
-    }]
-
 const convertValor = (valor: any) => {
 
     const signal = Number(valor) < 0 ? '-' : ''
-    
+
     valor = String(valor).replace(/\D/g, '')
     valor = Number(valor) / 100
     valor = valor.toLocaleString('pt-BR', {
@@ -96,7 +71,18 @@ const convertValor = (valor: any) => {
 
 const Transaction = () => {
 
-    
+    const [tranzactions, setTranzactions] = useState<TranzactionData | any>([])
+
+    useEffect(() => {
+        db.collection('tranzactions')
+            .onSnapshot(snap => {
+                const tranzactions: any = snap.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+                setTranzactions(tranzactions)
+            })
+    }, [])  
 
     return <>
         <section id='transaction'>
@@ -118,8 +104,8 @@ const Transaction = () => {
                         </thead>
                         <tbody>
 
-                            {ArrTransactionData.map((value, idx) => (
-                                <Theader key={idx} >
+                            {tranzactions.map((value: TranzactionData): any => (
+                                <Theader key={value.id} >
                                     <Description>{value.description}</Description>
 
                                     { value.amount > 0 ?

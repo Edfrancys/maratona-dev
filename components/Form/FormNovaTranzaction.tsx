@@ -1,11 +1,8 @@
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components';
+import { db } from '../../utils/Firebase';
+import { TranzactionData } from '../../utils/interfaces/TranzactionsInterface'
 
-interface TransactionData {
-    description: string,
-    amount: number,
-    date: string
-}
 
 const FormTranzaction = styled.form`
     max-width: 500px;
@@ -52,9 +49,15 @@ const FormNovaTranzaction = () => {
     const { register, errors, handleSubmit } = useForm({
         mode: 'onBlur'
     })
-    
-    const onSubmit = (data: TransactionData) => {
-        console.log(data);    
+
+    const onSubmit = async (data: TranzactionData) => {
+        db.collection('tranzactions')
+            .doc()
+            .set(data)
+            .then(() => {
+                console.log('ok')
+                closeModal()
+            })
     }
 
     return <>
