@@ -1,5 +1,8 @@
+import { useState, useEffect } from 'react'
+import { db } from '../utils/Firebase'
 import styled from 'styled-components'
 import { FaArrowAltCircleUp, FaArrowCircleDown, FaMoneyBillWave } from "react-icons/fa"
+import { TranzactionData } from '../utils/interfaces/TranzactionsInterface'
 
 const Section = styled.section`
     margin-top: -7rem;
@@ -39,33 +42,6 @@ const CardGreen = styled(CardEntradas)`
     background: ${props => props.theme.background.green};
     color: ${props => props.theme.colors.white};
 `
-
-const ArrTransactionData = [
-    {
-        id: 1,
-        description: 'Luz',
-        amount: -8000,
-        date: '23/01/2021'
-    },
-    {
-        id: 2,
-        description: 'Água',
-        amount: -4550,
-        date: '23/01/2021'
-    },
-    {
-        id: 3,
-        description: 'Salário Photoshop',
-        amount: 110000,
-        date: '23/01/2021'
-    },
-    {
-        id: 4,
-        description: 'Feira Mês',
-        amount: -19000,
-        date: '23/01/2021'
-    }]
-
 const convertValor = (valor: any) => {
 
     const signal = Number(valor) < 0 ? '-' : ''
@@ -80,34 +56,50 @@ const convertValor = (valor: any) => {
     return `${signal}  ${valor}`
 }
 
-const Incomes = () => {
+const Incomes = (tranzactions: any) => {
     /* Somar as Entradas */
     let income = 0
 
-    ArrTransactionData.map(valor => {
+    tranzactions.map((valor: TranzactionData) => {
         valor.amount > 0 ? income = income + valor.amount : ''
     })
 
     return income
 }
 
-const Expenses = () => {
+const Expenses = (tranzactions: any) => {
     /* Somar as Saídas */
-    let expense = 0
-
-    ArrTransactionData.map(valor => {
+    let expense = 0    
+    tranzactions.map((valor: TranzactionData) => {
         valor.amount < 0 ? expense = expense + valor.amount : ''
     })
 
     return expense
 }
 
-const Total = () => {
-    /* Entradas - Saídas */
-    return Incomes() + Expenses()
-}
+// const Total = (entradas: number, saidas: number) => {
+//     /* Entradas - Saídas */    
+//     return entradas + saidas
+// }
 
 const Balance = () => {
+
+    const [tranzactions, setTranzactions] = useState<TranzactionData | any>([])
+
+    useEffect(() => {
+        db.collection('tranzactions')
+            .onSnapshot(snap => {
+                const tranzactions: any = snap.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+                setTranzactions(tranzactions)
+            })
+    }, [])  
+    const entradas = Incomes(tranzactions)
+    const saidas = Expenses(tranzactions)
+    const total = Number(entradas) + Number(saidas)
+
     return <>
         <div className='container'>
             <Section id='balance'>
@@ -119,7 +111,7 @@ const Balance = () => {
                         <span>Entradas</span>
                         <FaArrowAltCircleUp />
                     </TitleCard>
-                    <ParagrafCard>{convertValor(Incomes())}</ParagrafCard>
+                    <ParagrafCard>{convertValor(entradas)}</ParagrafCard>
                 </CardEntradas>
 
                 <CardSaidas>
@@ -127,7 +119,7 @@ const Balance = () => {
                         <span>Saídas</span>
                         <FaArrowCircleDown />
                     </TitleCard>
-                    <ParagrafCard>{convertValor(Expenses())}</ParagrafCard>
+                    <ParagrafCard>{convertValor(saidas)}</ParagrafCard>
                 </CardSaidas>
 
                 <CardGreen>
@@ -135,7 +127,7 @@ const Balance = () => {
                         <span>Saldo</span>
                         <FaMoneyBillWave />
                     </TitleCard>
-                    <ParagrafCard>{convertValor(Total())}</ParagrafCard>
+                    <ParagrafCard>{convertValor(total)}</ParagrafCard>
                 </CardGreen>
 
             </Section>
