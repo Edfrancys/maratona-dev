@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { db } from '../utils/Firebase'
 import { TranzactionData } from '../utils/interfaces/TranzactionsInterface';
+import { FaMinusCircle } from 'react-icons/fa'
 
 const DivTable = styled.div`
     display: block;
@@ -50,6 +51,14 @@ const Linkhref = styled.a`
     margin: 2rem 0 1rem 0;
     cursor: pointer;
 `
+const LinkDelete = styled.a`
+    width: 32px;
+    color: #c91818;
+    display: flex;
+    justify-content: center;
+    border-radius: 3rem;
+    padding: 0.3rem;
+`
 
 const openModal = () => {
     document.querySelector('#modal')?.classList.add('modal-active')
@@ -67,6 +76,10 @@ const convertValor = (valor: any) => {
     })
 
     return `${signal}  ${valor}`
+}
+
+const deleteTranzaction = (ref:  TranzactionData) => {
+    db.collection('tranzactions').doc(ref.id).delete()
 }
 
 const Transaction = () => {
@@ -114,7 +127,9 @@ const Transaction = () => {
                                     }
 
                                     <Data>{value.date}</Data>
-                                    <td> Delete </td>
+                                    <td>
+                                    <LinkDelete className='btn' onClick={ () => { deleteTranzaction(value) } } > <FaMinusCircle /> </LinkDelete>
+                                    </td>
                                 </Theader>
                             ))}
 

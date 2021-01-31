@@ -51,6 +51,9 @@ const FormNovaTranzaction = () => {
     })
 
     const onSubmit = async (data: TranzactionData) => {
+        
+        data.amount = data.amount * 100
+
         db.collection('tranzactions')
             .doc()
             .set(data)
@@ -81,7 +84,7 @@ const FormNovaTranzaction = () => {
             <FormGroup>
                 <label className='sr-only' htmlFor='amount'>Valor</label>
                 <FormInput
-                    type='number'
+                    type='text'
                     id='amount'
                     name='amount'
                     placeholder='Valor'
