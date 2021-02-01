@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components';
-import { db } from '../../utils/Firebase';
+//import { db } from '../../utils/Firebase';
 import { TranzactionData } from '../../utils/interfaces/TranzactionsInterface'
 
 
@@ -70,8 +70,7 @@ const FormNovaTranzaction = () => {
 
         data.amount = data.amount * 100
 
-        console.log(data);
-        
+        console.log(data);        
 
         // db.collection('tranzactions')
         //     .doc()
