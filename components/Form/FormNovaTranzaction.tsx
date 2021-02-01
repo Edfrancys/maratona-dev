@@ -35,6 +35,7 @@ const ButtonSubmit = styled.button`
     width: 45%;    
     color: green;
 `
+
 const ButtonReset = styled.button`
     width: 45%;
     color: gray;
@@ -65,6 +66,32 @@ const FormNovaTranzaction = () => {
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
             <TitleForm>Adicionar Nova Tranzação</TitleForm>
+            <FormGroup>
+                <label htmlFor='tipo'>Tipo</label>
+                <FormInput
+                    type='radio'
+                    id='tipo'
+                    name='tipo'   
+                    value='Saida'                 
+                    ref={register({
+                        required: 'Selecione o tipo de despesa.',
+                    })}
+                />
+                <label htmlFor='tipo'>Tipo</label>
+                <FormInput
+                    type='radio'
+                    id='tipo'
+                    name='tipo'       
+                    value='Entrada'             
+                    ref={register({
+                        required: 'Selecione o tipo de despesa.',
+                    })}
+                />
+                
+                {errors.description && (
+                    <div><small>{errors.description.message}</small></div>
+                )}
+            </FormGroup>
             <FormGroup>
                 <label className='sr-only' htmlFor='description'>Descrição</label>
                 <FormInput

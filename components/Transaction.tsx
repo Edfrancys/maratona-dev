@@ -9,36 +9,29 @@ const DivTable = styled.div`
     width: 100%;
     overflow-x: auto;
 `
-
 const Title = styled.h2`
     color: ${props => props.theme.colors.dark};
     margin-top: 3.2rem;
     margin-bottom: 0.8rem;
     font-weight: normal;    
 `
-
 const Table = styled.table`
     width: 100%;
     border-spacing: 0 0.5rem;    
 `
-
 const Theader = styled.tr`
     background: ${props => props.theme.background.white};    
     text-align: left;
 `
-
 const Description = styled.td`
     color: ${props => props.theme.background.dark};
 `
-
 const Income = styled.td`
     color: #12a454;
 `
-
 const Expense = styled.td`
     color: #be1e53;
 `
-
 const Data = styled.td`
     color: #353535;
 `
