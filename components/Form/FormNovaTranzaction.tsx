@@ -16,6 +16,21 @@ const FormGroup = styled.div`
     margin-top: 0.8rem;
 `
 
+const FormGroupRadio = styled.div`
+    margin-top: 0.8rem;   
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    gap: 1.5rem; 
+`
+
+const LabelRadio = styled.label`
+    display: grid;
+    grid-template-columns: 10px 100px;
+    gap: 1.5rem;
+`
+
+const Tipografy = styled.p`
+`
 const FormGroupActions = styled.div`
     margin-top: 0.8rem;
     display: flex;
@@ -35,6 +50,7 @@ const ButtonSubmit = styled.button`
     width: 45%;    
     color: green;
 `
+
 const ButtonReset = styled.button`
     width: 45%;
     color: gray;
@@ -51,13 +67,13 @@ const FormNovaTranzaction = () => {
     })
 
     const onSubmit = async (data: TranzactionData) => {
-        
-        data.amount = data.amount * 100               
+
+        data.amount = data.amount * 100
 
         db.collection('tranzactions')
             .doc()
             .set(data)
-            .then(() => {                
+            .then(() => {
                 closeModal()
             })
     }
@@ -65,6 +81,33 @@ const FormNovaTranzaction = () => {
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
             <TitleForm>Adicionar Nova Tranzação</TitleForm>
+            <FormGroupRadio>
+                <LabelRadio htmlFor='tipo'><FormInput
+                    type='radio'
+                    id='tipo'
+                    name='tipo'
+                    value='saida'
+                    ref={register({
+                        required: 'Selecione o tipo de despesa.',
+                    })}
+                /> <Tipografy>Saída</Tipografy>
+                </LabelRadio>
+
+                <LabelRadio htmlFor='tipo'><FormInput
+                    type='radio'
+                    id='tipo'
+                    name='tipo'
+                    value='entrada'
+                    ref={register({
+                        required: 'Selecione o tipo de despesa.',
+                    })}
+                /> Entrada</LabelRadio>
+
+
+                {errors.tipo && (
+                    <div><small>{errors.tipo.message}</small></div>
+                )}
+            </FormGroupRadio>
             <FormGroup>
                 <label className='sr-only' htmlFor='description'>Descrição</label>
                 <FormInput
@@ -112,8 +155,8 @@ const FormNovaTranzaction = () => {
                     <div><small>{errors.date.message}</small></div>
                 )}
             </FormGroup>
-            <FormGroupActions>                
-                <ButtonReset onClick={ closeModal } type='reset' className='btn' > Cancelar </ButtonReset>
+            <FormGroupActions>
+                <ButtonReset onClick={closeModal} type='reset' className='btn' > Cancelar </ButtonReset>
                 <ButtonSubmit type='submit' className='btn adicionar' > Adicionar </ButtonSubmit>
             </FormGroupActions>
         </FormTranzaction>

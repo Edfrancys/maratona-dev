@@ -9,36 +9,29 @@ const DivTable = styled.div`
     width: 100%;
     overflow-x: auto;
 `
-
 const Title = styled.h2`
     color: ${props => props.theme.colors.dark};
     margin-top: 3.2rem;
     margin-bottom: 0.8rem;
     font-weight: normal;    
 `
-
 const Table = styled.table`
     width: 100%;
     border-spacing: 0 0.5rem;    
 `
-
 const Theader = styled.tr`
     background: ${props => props.theme.background.white};    
     text-align: left;
 `
-
 const Description = styled.td`
     color: ${props => props.theme.background.dark};
 `
-
 const Income = styled.td`
     color: #12a454;
 `
-
 const Expense = styled.td`
     color: #be1e53;
 `
-
 const Data = styled.td`
     color: #353535;
 `
@@ -64,9 +57,9 @@ const openModal = () => {
     document.querySelector('#modal')?.classList.add('modal-active')
 }
 
-const convertValor = (valor: any) => {
+const convertValor = (valor: any, tipo: any) => {
 
-    const signal = Number(valor) < 0 ? '-' : ''
+    const signal = tipo === 'saida' ? '-' : ''
 
     valor = String(valor).replace(/\D/g, '')
     valor = Number(valor) / 100
@@ -121,9 +114,9 @@ const Transaction = () => {
                                 <Theader key={value.id} >
                                     <Description>{value.description}</Description>
 
-                                    { value.amount > 0 ?
-                                        <Income>{convertValor(value.amount)}</Income>
-                                        : <Expense>{convertValor(value.amount)}</Expense>
+                                    { value.tipo === 'entrada' ?
+                                        <Income>{convertValor(value.amount, value.tipo)}</Income>
+                                        : <Expense>{convertValor(value.amount, value.tipo)}</Expense>
                                     }
 
                                     <Data>{value.date}</Data>
