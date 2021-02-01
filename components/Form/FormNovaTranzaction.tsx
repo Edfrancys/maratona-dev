@@ -16,6 +16,15 @@ const FormGroup = styled.div`
     margin-top: 0.8rem;
 `
 
+const FormGroupRadio = styled.div`
+    margin-top: 0.8rem;
+    display: inline-flex;
+`
+
+const LabelRadio = styled.label`
+    display: inline-flex;
+`
+
 const FormGroupActions = styled.div`
     margin-top: 0.8rem;
     display: flex;
@@ -52,13 +61,13 @@ const FormNovaTranzaction = () => {
     })
 
     const onSubmit = async (data: TranzactionData) => {
-        
-        data.amount = data.amount * 100               
+
+        data.amount = data.amount * 100
 
         db.collection('tranzactions')
             .doc()
             .set(data)
-            .then(() => {                
+            .then(() => {
                 closeModal()
             })
     }
@@ -66,33 +75,33 @@ const FormNovaTranzaction = () => {
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
             <TitleForm>Adicionar Nova Tranzação</TitleForm>
-            <FormGroup>
-                <label htmlFor='tipo'><FormInput
+            <FormGroupRadio>
+                <LabelRadio htmlFor='tipo'><FormInput
                     type='radio'
                     id='tipo'
-                    name='tipo'   
-                    value='Saida'                 
+                    name='tipo'
+                    value='Saida'
                     ref={register({
                         required: 'Selecione o tipo de despesa.',
                     })}
-                /> Saída 
-                </label>
-                
-                <label htmlFor='tipo'><FormInput
+                /> Saída
+                </LabelRadio>
+
+                <LabelRadio htmlFor='tipo'><FormInput
                     type='radio'
                     id='tipo'
-                    name='tipo'       
-                    value='Entrada'             
+                    name='tipo'
+                    value='Entrada'
                     ref={register({
                         required: 'Selecione o tipo de despesa.',
                     })}
-                /> Entrada</label>
-                
-                
+                /> Entrada</LabelRadio>
+
+
                 {errors.description && (
                     <div><small>{errors.description.message}</small></div>
                 )}
-            </FormGroup>
+            </FormGroupRadio>
             <FormGroup>
                 <label className='sr-only' htmlFor='description'>Descrição</label>
                 <FormInput
@@ -140,8 +149,8 @@ const FormNovaTranzaction = () => {
                     <div><small>{errors.date.message}</small></div>
                 )}
             </FormGroup>
-            <FormGroupActions>                
-                <ButtonReset onClick={ closeModal } type='reset' className='btn' > Cancelar </ButtonReset>
+            <FormGroupActions>
+                <ButtonReset onClick={closeModal} type='reset' className='btn' > Cancelar </ButtonReset>
                 <ButtonSubmit type='submit' className='btn adicionar' > Adicionar </ButtonSubmit>
             </FormGroupActions>
         </FormTranzaction>
