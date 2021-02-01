@@ -61,7 +61,7 @@ const Incomes = (tranzactions: any) => {
     let income = 0
 
     tranzactions.map((valor: TranzactionData) => {
-        valor.amount > 0 ? income = income + Number(valor.amount) : ''
+        valor.tipo === 'entrada' ? income = income + Number(valor.amount) : ''
     })
     
     return income
@@ -71,16 +71,11 @@ const Expenses = (tranzactions: any) => {
     /* Somar as Saídas */
     let expense = 0    
     tranzactions.map((valor: TranzactionData) => {
-        valor.amount < 0 ? expense = expense + Number(valor.amount) : ''
+        valor.tipo === 'saida' ? expense = expense + Number(valor.amount) : ''
     })
 
     return expense
 }
-
-// const Total = (entradas: number, saidas: number) => {
-//     /* Entradas - Saídas */    
-//     return entradas + saidas
-// }
 
 const Balance = () => {
 

@@ -57,9 +57,9 @@ const openModal = () => {
     document.querySelector('#modal')?.classList.add('modal-active')
 }
 
-const convertValor = (valor: any) => {
+const convertValor = (valor: any, tipo: any) => {
 
-    const signal = Number(valor) < 0 ? '-' : ''
+    const signal = tipo === 'saida' ? '-' : ''
 
     valor = String(valor).replace(/\D/g, '')
     valor = Number(valor) / 100
@@ -115,8 +115,8 @@ const Transaction = () => {
                                     <Description>{value.description}</Description>
 
                                     { value.amount > 0 ?
-                                        <Income>{convertValor(value.amount)}</Income>
-                                        : <Expense>{convertValor(value.amount)}</Expense>
+                                        <Income>{convertValor(value.amount, value.tipo)}</Income>
+                                        : <Expense>{convertValor(value.amount, value.tipo)}</Expense>
                                     }
 
                                     <Data>{value.date}</Data>

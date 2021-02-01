@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components';
-//import { db } from '../../utils/Firebase';
+import { db } from '../../utils/Firebase';
 import { TranzactionData } from '../../utils/interfaces/TranzactionsInterface'
 
 
@@ -70,16 +70,12 @@ const FormNovaTranzaction = () => {
 
         data.amount = data.amount * 100
 
-        console.log(data);    
-        
-        closeModal()
-
-        // db.collection('tranzactions')
-        //     .doc()
-        //     .set(data)
-        //     .then(() => {
-        //         closeModal()
-        //     })
+        db.collection('tranzactions')
+            .doc()
+            .set(data)
+            .then(() => {
+                closeModal()
+            })
     }
 
     return <>
@@ -90,7 +86,7 @@ const FormNovaTranzaction = () => {
                     type='radio'
                     id='tipo'
                     name='tipo'
-                    value='Saida'
+                    value='saida'
                     ref={register({
                         required: 'Selecione o tipo de despesa.',
                     })}
@@ -101,7 +97,7 @@ const FormNovaTranzaction = () => {
                     type='radio'
                     id='tipo'
                     name='tipo'
-                    value='Entrada'
+                    value='entrada'
                     ref={register({
                         required: 'Selecione o tipo de despesa.',
                     })}
