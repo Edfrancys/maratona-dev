@@ -70,7 +70,9 @@ const FormNovaTranzaction = () => {
 
         data.amount = data.amount * 100
 
-        console.log(data);        
+        console.log(data);    
+        
+        closeModal()
 
         // db.collection('tranzactions')
         //     .doc()
