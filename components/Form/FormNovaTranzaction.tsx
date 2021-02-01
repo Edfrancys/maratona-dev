@@ -19,19 +19,18 @@ const FormGroup = styled.div`
 const FormGroupRadio = styled.div`
     margin-top: 0.8rem;   
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 100px);
     gap: 1.5rem; 
 `
 
 const LabelRadio = styled.label`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 10px 100px;
     gap: 1.5rem;
 `
 
 const Tipografy = styled.p`
 `
-
 const FormGroupActions = styled.div`
     margin-top: 0.8rem;
     display: flex;
@@ -71,12 +70,15 @@ const FormNovaTranzaction = () => {
 
         data.amount = data.amount * 100
 
-        db.collection('tranzactions')
-            .doc()
-            .set(data)
-            .then(() => {
-                closeModal()
-            })
+        console.log(data);
+        
+
+        // db.collection('tranzactions')
+        //     .doc()
+        //     .set(data)
+        //     .then(() => {
+        //         closeModal()
+        //     })
     }
 
     return <>
