@@ -35,7 +35,7 @@ const ButtonSubmit = styled.button`
     width: 45%;    
     color: green;
 `
-const LinkCancelar = styled.a`
+const ButtonReset = styled.button`
     width: 45%;
     color: gray;
 `
@@ -52,19 +52,18 @@ const FormNovaTranzaction = () => {
 
     const onSubmit = async (data: TranzactionData) => {
         
-        data.amount = data.amount * 100
+        data.amount = data.amount * 100               
 
         db.collection('tranzactions')
             .doc()
             .set(data)
-            .then(() => {
-                console.log('ok')
+            .then(() => {                
                 closeModal()
             })
     }
 
     return <>
-        <FormTranzaction onSubmit={handleSubmit(onSubmit)} >
+        <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
             <TitleForm>Adicionar Nova Tranzação</TitleForm>
             <FormGroup>
                 <label className='sr-only' htmlFor='description'>Descrição</label>
@@ -84,7 +83,7 @@ const FormNovaTranzaction = () => {
             <FormGroup>
                 <label className='sr-only' htmlFor='amount'>Valor</label>
                 <FormInput
-                    type='text'
+                    type='number'
                     id='amount'
                     name='amount'
                     placeholder='Valor'
@@ -113,8 +112,8 @@ const FormNovaTranzaction = () => {
                     <div><small>{errors.date.message}</small></div>
                 )}
             </FormGroup>
-            <FormGroupActions>
-                <LinkCancelar className='btn' onClick={closeModal} > Cancelar </LinkCancelar>
+            <FormGroupActions>                
+                <ButtonReset onClick={ closeModal } type='reset' className='btn' > Cancelar </ButtonReset>
                 <ButtonSubmit type='submit' className='btn adicionar' > Adicionar </ButtonSubmit>
             </FormGroupActions>
         </FormTranzaction>
