@@ -67,8 +67,7 @@ const FormNovaTranzaction = () => {
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
             <TitleForm>Adicionar Nova Tranzação</TitleForm>
             <FormGroup>
-                <label htmlFor='tipo'>Tipo</label>
-                <FormInput
+                <label htmlFor='tipo'><FormInput
                     type='radio'
                     id='tipo'
                     name='tipo'   
@@ -76,9 +75,10 @@ const FormNovaTranzaction = () => {
                     ref={register({
                         required: 'Selecione o tipo de despesa.',
                     })}
-                />
-                <label htmlFor='tipo'>Tipo</label>
-                <FormInput
+                /> Saída 
+                </label>
+                
+                <label htmlFor='tipo'><FormInput
                     type='radio'
                     id='tipo'
                     name='tipo'       
@@ -86,7 +86,8 @@ const FormNovaTranzaction = () => {
                     ref={register({
                         required: 'Selecione o tipo de despesa.',
                     })}
-                />
+                /> Entrada</label>
+                
                 
                 {errors.description && (
                     <div><small>{errors.description.message}</small></div>
