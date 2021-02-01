@@ -17,7 +17,10 @@ const FormGroup = styled.div`
 `
 
 const FormGroupRadio = styled.div`
-    margin-top: 0.8rem;    
+    margin-top: 0.8rem;   
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; 
 `
 
 const LabelRadio = styled.label`
