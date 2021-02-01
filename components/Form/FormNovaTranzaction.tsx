@@ -17,12 +17,16 @@ const FormGroup = styled.div`
 `
 
 const FormGroupRadio = styled.div`
-    margin-top: 0.8rem;
-    display: inline-flex;
+    margin-top: 0.8rem;    
 `
 
 const LabelRadio = styled.label`
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+`
+
+const Tipografy = styled.p`
 `
 
 const FormGroupActions = styled.div`
@@ -84,7 +88,7 @@ const FormNovaTranzaction = () => {
                     ref={register({
                         required: 'Selecione o tipo de despesa.',
                     })}
-                /> Saída
+                /> <Tipografy>Saída</Tipografy>
                 </LabelRadio>
 
                 <LabelRadio htmlFor='tipo'><FormInput
