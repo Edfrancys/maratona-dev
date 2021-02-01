@@ -107,8 +107,8 @@ const FormNovaTranzaction = () => {
                 /> Entrada</LabelRadio>
 
 
-                {errors.description && (
-                    <div><small>{errors.description.message}</small></div>
+                {errors.tipo && (
+                    <div><small>{errors.tipo.message}</small></div>
                 )}
             </FormGroupRadio>
             <FormGroup>
