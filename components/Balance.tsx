@@ -98,7 +98,7 @@ const Balance = () => {
     const saidas = Expenses(tranzactions)
     //console.log('saidas:', saidas);
     
-    const total = entradas + saidas
+    const total = entradas - saidas
     //console.log('total:', total);
     
 
