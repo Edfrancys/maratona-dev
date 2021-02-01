@@ -114,7 +114,7 @@ const Transaction = () => {
                                 <Theader key={value.id} >
                                     <Description>{value.description}</Description>
 
-                                    { value.amount > 0 ?
+                                    { value.tipo === 'entrada' ?
                                         <Income>{convertValor(value.amount, value.tipo)}</Income>
                                         : <Expense>{convertValor(value.amount, value.tipo)}</Expense>
                                     }
