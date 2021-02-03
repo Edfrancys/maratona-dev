@@ -11,10 +11,9 @@ export default function Home() {
 
     AuthChekedUserOnChanged()
 
-    const { user } = useAuth()
+    const { user, signOut } = useAuth()
 
     if (!user) {
-
         return <div>
             <h2>Aguardando Login...</h2>
         </div>
@@ -29,6 +28,7 @@ export default function Home() {
                     <>
                         <p>Nome: { user.name }</p>
                         <p>Email: { user.email }</p>
+                        <button onClick={signOut}>Sair</button>
                     </>
                 )}
                 <Modal />
