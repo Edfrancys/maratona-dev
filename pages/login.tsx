@@ -1,7 +1,21 @@
 import LoginForm from '../components/Form/LoginForm'
 import Layout from '../components/Layout';
 
+import { useAuth } from '../utils/context/AuthContext'
+import { AuthChekedUserOnChanged } from '../utils/hook/AuthChekedUserOnChanged'
+import { useRouter } from 'next/router'
+
 const LoginPage: React.FC = () => {
+
+    AuthChekedUserOnChanged()
+
+    const { user } = useAuth()
+
+    const router = useRouter()
+
+    if (user) {
+        router.push('/index')
+    }
     
     return(
         <Layout title='Login | Maratona - Finance.Note' >
