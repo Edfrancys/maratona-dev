@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { AuthProvider }  from '../utils/context/AuthContext';
 
 const GlobalStyle = createGlobalStyle`
     
@@ -109,11 +110,12 @@ const theme = {
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
-            <GlobalStyle />
-            <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
-            </ThemeProvider>
-
+            <AuthProvider>
+                <GlobalStyle />
+                <ThemeProvider theme={theme}>
+                    <Component {...pageProps} />
+                </ThemeProvider>
+            </AuthProvider>
         </>
     )
 }
