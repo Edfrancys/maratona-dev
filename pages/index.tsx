@@ -28,6 +28,7 @@ export default function Home() {
                     <>
                         <p>Nome: { user.name }</p>
                         <p>Email: { user.email }</p>
+                        <p>UID: { user.uid }</p>
                         <button onClick={signOut}>Sair</button>
                     </>
                 )}

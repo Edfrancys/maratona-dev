@@ -56,14 +56,14 @@ export const AuthProvider: React.FC = ({ children }: Props) => {
                     console.log(Cf)
                     setUser(objUser)
                     localStorage.setItem('@VJAuth:user', JSON.stringify(objUser))
-                    Router.push('/dashboard')
+                    Router.push('/index')
                 })
 
             :
 
             setUser(objUser)
         localStorage.setItem('@VJAuth:user', JSON.stringify(objUser))
-        Router.push('/dashboard')
+        Router.push('/index')
 
     }
 
@@ -85,7 +85,7 @@ export const AuthProvider: React.FC = ({ children }: Props) => {
                 setUser(getData)
                 console.log(getData)
                 localStorage.setItem('@VJAuth:user', JSON.stringify(getData))
-                Router.push('/dashboard')
+                Router.push('/index')
             })
     }
 
