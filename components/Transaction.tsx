@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { useAuth } from '../utils/context/AuthContext';
 import { db } from '../utils/Firebase'
 import { TranzactionData } from '../utils/interfaces/TranzactionsInterface';
 import { FaMinusCircle } from 'react-icons/fa'
@@ -77,10 +78,12 @@ const deleteTranzaction = (ref:  TranzactionData) => {
 
 const Transaction = () => {
 
+    const { user } = useAuth()
+
     const [tranzactions, setTranzactions] = useState<TranzactionData | any>([])
 
     useEffect(() => {
-        db.collection('tranzactions')
+        db.collection('tranzactions').where('uid', '==', user.uid)
             .onSnapshot(snap => {
                 const tranzactions: any = snap.docs.map(doc => ({
                     id: doc.id,
