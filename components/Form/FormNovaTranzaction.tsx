@@ -11,6 +11,7 @@ const FormTranzaction = styled.form`
 
 const TitleForm = styled.h1`
     margin-top: 0;
+    color: #00804a;
 `
 
 const FormGroup = styled.div`
@@ -37,6 +38,11 @@ const FormGroupActions = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+`
+
+const FormRadio = styled.input`
+    border: none;       
+    background: #dcdcdc;
 `
 
 const FormInput = styled.input`
@@ -82,11 +88,19 @@ const FormNovaTranzaction = () => {
             })
     }
 
+    const date: any = new Date()
+
+    const dataYear = date.getYear()
+    const dataMonth = date.getMonth()
+    const dateDay = date.getDay()
+
+    const currentDate = dataYear + dataMonth + dateDay
+
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
             <TitleForm>Adicionar Nova Tranzação</TitleForm>
             <FormGroupRadio>
-                <LabelRadio htmlFor='tipo'><FormInput
+                <LabelRadio htmlFor='tipo'><FormRadio
                     type='radio'
                     id='tipo'
                     name='tipo'
@@ -151,6 +165,7 @@ const FormNovaTranzaction = () => {
                     id='date'
                     name='date'
                     placeholder='00/00/0000'
+                    value={currentDate}
                     ref={register({
                         required: 'Selecione a data de lançamento',
                     })}

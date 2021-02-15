@@ -34,11 +34,7 @@ const CadastroPage: React.FC = () => {
                 <label className='text-sm'>Nome Sobrenome:</label>
                 <input type="text" name='name' className='w-full border rounded-lg border-gray-400 px-3 py-2'
                     ref={register({
-                        required: 'Preencha com seu e-mail.',
-                        pattern: {
-                            value: /\S+@\S+\.\S+/ ,
-                            message: 'Coloque um e-mail válido.'
-                        }
+                        required: 'Preencha com seu e-mail.'
                     })} />
                 {errors.email && (
                     <div>
