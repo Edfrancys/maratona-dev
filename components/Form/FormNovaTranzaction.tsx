@@ -53,7 +53,7 @@ const FormInput = styled.input`
     border-radius: .2rem;
     padding: 0.6rem;
     width: 100%;
-    background: #dcdcdc;
+    background: #ffffff;
 `
 
 const ButtonSubmit = styled.button`
@@ -159,7 +159,7 @@ const FormNovaTranzaction = () => {
                 {errors.amount && (
                     <div><small>{errors.amount.message}</small></div>
                 )}
-                <small>Use o sinal de - (negativo) para despesas e , (virgula) para as casas decimais.</small>
+                <small>Use a (virgula) para as casas decimais.</small>
             </FormGroup>
             <FormGroup>
                 <label className='sr-only' htmlFor='date'>Data de Lançamento</label>
