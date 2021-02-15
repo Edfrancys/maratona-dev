@@ -20,8 +20,8 @@ const LoginPage: React.FC = () => {
                 
                 <div className='bg-gray-800 lg:min-h-screen lg:flex lg:items-center p-8 sm:p-12'>
                     <div className='flex-grow'>
-                        <h1 className='text-white text-center text-3xl pb-5'>Faça seu Login!</h1>
-                        <p className='text-lg text-center text-white'>Preencha com seus dados para acessar sua área resevada.</p>
+                        <h1 className='text-white text-center text-3xl pb-5'>Faça seu Cadastro!</h1>
+                        <p className='text-lg text-center text-white'>Preencha com seus dados para realizar seu cadastro.</p>
                     </div>
                 </div>
                 <div className='lg:min-h-screen lg:flex lg:items-center p-12 lg:p-24 xl:48'>

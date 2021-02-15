@@ -31,7 +31,7 @@ const CadastroPage: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmitsignUp)} className='justify-between pt-4 pb-6' >
 
             <div className='px-6 mb-3'>
-                <label className='text-sm'>Email:</label>
+                <label className='text-sm'>Nome Sobrenome:</label>
                 <input type="text" name='name' className='w-full border rounded-lg border-gray-400 px-3 py-2'
                     ref={register({
                         required: 'Preencha com seu e-mail.',
