@@ -94,7 +94,7 @@ const FormNovaTranzaction = () => {
     const dataMonth = date.getMonth() + 1
     const dateDay = date.getDate()
 
-    const currentDate = dataYear + '-' + dataMonth + '-' + dateDay
+    const currentDate = String(dataYear + '-0' + dataMonth + '-' + dateDay)
 
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
@@ -163,8 +163,7 @@ const FormNovaTranzaction = () => {
                 <FormInput
                     type='date'
                     id='date'
-                    name='date'
-                    placeholder='00/00/0000'
+                    name='date'                    
                     value={currentDate}
                     ref={register({
                         required: 'Selecione a data de lançamento',
