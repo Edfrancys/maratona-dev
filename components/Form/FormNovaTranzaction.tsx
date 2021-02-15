@@ -14,6 +14,7 @@ const TitleForm = styled.h1`
     margin-top: 0;
     margin-bottom: 25px;
     color: #00804a;
+    font-weight: 700;
 `
 
 const FormGroup = styled.div`

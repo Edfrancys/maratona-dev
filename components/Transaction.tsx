@@ -23,6 +23,7 @@ const Table = styled.table`
 const Theader = styled.tr`
     background: ${props => props.theme.background.white};    
     text-align: left;
+    font-weight: 400;
 `
 const Description = styled.td`
     color: ${props => props.theme.background.dark};
