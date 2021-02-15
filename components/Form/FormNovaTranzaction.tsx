@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form'
 import styled from 'styled-components';
+import { useAuth } from '../../utils/context/AuthContext';
 import { db } from '../../utils/Firebase';
 import { TranzactionData } from '../../utils/interfaces/TranzactionsInterface'
 
@@ -62,6 +63,8 @@ const closeModal = () => {
 
 const FormNovaTranzaction = () => {
 
+    const { user } = useAuth()
+
     const { register, errors, handleSubmit } = useForm({
         mode: 'onBlur'
     })
@@ -69,6 +72,7 @@ const FormNovaTranzaction = () => {
     const onSubmit = async (data: TranzactionData) => {
 
         data.amount = data.amount * 100
+        data.uid = user.uid
 
         db.collection('tranzactions')
             .doc()
