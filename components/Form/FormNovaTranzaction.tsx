@@ -28,7 +28,13 @@ const FormGroupRadio = styled.div`
 const LabelRadio = styled.label`
     display: grid;
     grid-template-columns: 10px 100px;
-    gap: 1.5rem;
+    gap: 1.0rem;
+`
+
+const FormRadio = styled.input`
+    border: none;       
+    background: #dcdcdc;
+    width: 15px;
 `
 
 const Tipografy = styled.p`
@@ -40,10 +46,7 @@ const FormGroupActions = styled.div`
     align-items: center;
 `
 
-const FormRadio = styled.input`
-    border: none;       
-    background: #dcdcdc;
-`
+
 
 const FormInput = styled.input`
     border: none;
@@ -111,7 +114,7 @@ const FormNovaTranzaction = () => {
                 /> <Tipografy>Saída</Tipografy>
                 </LabelRadio>
 
-                <LabelRadio htmlFor='tipo'><FormInput
+                <LabelRadio htmlFor='tipo'><FormRadio
                     type='radio'
                     id='tipo'
                     name='tipo'
