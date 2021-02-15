@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useAuth } from '../../utils/context/AuthContext';
 import { db } from '../../utils/Firebase';
 import { TranzactionData } from '../../utils/interfaces/TranzactionsInterface'
+import { FaMoneyCheckAlt } from 'react-icons/fa'
 
 
 const FormTranzaction = styled.form`
@@ -11,6 +12,7 @@ const FormTranzaction = styled.form`
 
 const TitleForm = styled.h1`
     margin-top: 0;
+    margin-bottom: 25px;
     color: #00804a;
 `
 
@@ -40,7 +42,7 @@ const FormRadio = styled.input`
 const Tipografy = styled.p`
 `
 const FormGroupActions = styled.div`
-    margin-top: 0.8rem;
+    margin-top: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -101,7 +103,7 @@ const FormNovaTranzaction = () => {
 
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
-            <TitleForm>Adicionar Nova Transação</TitleForm>
+            <TitleForm><FaMoneyCheckAlt />Adicionar Nova Transação</TitleForm>
             <FormGroupRadio>
                 <LabelRadio htmlFor='tipo'><FormRadio
                     type='radio'

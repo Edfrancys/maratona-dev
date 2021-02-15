@@ -3,6 +3,8 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { AuthProvider }  from '../utils/context/AuthContext';
 
 const GlobalStyle = createGlobalStyle`
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;0,900;1,200;1,400;1,600;1,900&display=swap');
     
     * {
         margin: 0;
@@ -16,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: #f0f2f5;
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Montserrat', sans-serif;
     }
 
     .container{
