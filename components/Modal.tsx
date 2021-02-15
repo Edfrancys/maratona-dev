@@ -4,7 +4,7 @@ import FormNovaTranzaction from '../components/Form/FormNovaTranzaction'
 const ModalOverlay = styled.div`
     position: fixed; 
     top: 0;
-    background: #191919;
+    background: rgba(25,25,25, 0.8);
     width: 100%;
     height: 100%;
    

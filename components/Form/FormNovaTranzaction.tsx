@@ -94,7 +94,7 @@ const FormNovaTranzaction = () => {
     const dataMonth = date.getMonth()
     const dateDay = date.getDay()
 
-    const currentDate = dataYear + dataMonth + dateDay
+    const currentDate = dataYear + '-' + dataMonth + '-' + dateDay
 
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
