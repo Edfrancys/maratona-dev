@@ -90,15 +90,15 @@ const FormNovaTranzaction = () => {
 
     const date: any = new Date()
 
-    const dataYear = date.getYear()
-    const dataMonth = date.getMonth()
-    const dateDay = date.getDay()
+    const dataYear = date.getFullYear()
+    const dataMonth = date.getMonth() + 1
+    const dateDay = date.getDate()
 
     const currentDate = dataYear + '-' + dataMonth + '-' + dateDay
 
     return <>
         <FormTranzaction className='formtranzaction' onSubmit={handleSubmit(onSubmit)} >
-            <TitleForm>Adicionar Nova Tranzação</TitleForm>
+            <TitleForm>Adicionar Nova Transação</TitleForm>
             <FormGroupRadio>
                 <LabelRadio htmlFor='tipo'><FormRadio
                     type='radio'
